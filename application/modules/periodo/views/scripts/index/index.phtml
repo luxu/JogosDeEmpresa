@@ -1,0 +1,32 @@
+<span class="label">Periodo</span>
+<hr/>
+<a href="/periodo/index/add/">Criar novo Periodo</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Período</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Empresa</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Aluno</b></td>
+    <td width="270" align="center" style="padding:5px;"><b>Data Entrega</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Hora Entrega</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Capital Inicial</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['per_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['emp_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['alu_codigo']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['per_dataentrega']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['per_horaentrega']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['per_capitalinicialperiodo']; ?></td>
+    <td width="90" align="center"><a href="/periodo/index/add/id/<?php echo $d['per_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/periodo/index/delete/id/<?php echo $d['per_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>

@@ -1,0 +1,29 @@
+<span class="label">Empresa</span>
+<hr/>
+<a href="<?=$this->url(array("controller"=>"index","action"=>"add","module"=>"empresa"),null,true)?>">Criar nova Empresa</a>
+<br/>
+<br/>
+<?php if (count($this->data) > 0): ?>
+<table width="600" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Codigo</b></td>
+    <td width="270" align="center" style="padding:5px;"><b>Descrição</b></td>
+    <td width="270" align="center" style="padding:5px;"><b>Data</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Ativa</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['emp_codigo']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['emp_descricao']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['emp_data']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['emp_ativa']; ?></td>
+    <td width="90" align="center" style="padding:5px;"><a href="/empresa/index/add/id/<?php echo $d['emp_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center" style="padding:5px;"><a href="/empresa/index/delete/id/<?php echo $d['emp_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<br/>
+<?php endif; ?>

@@ -1,0 +1,54 @@
+<?php
+if (isset($this->form)) {
+   echo $this->form;
+} else {
+   $array = $this->data;
+   $date = new Zend_Date($array['jor_datapublicacao']);
+   $data = $date->get(Zend_Date::DATE_MEDIUM, 'pt_BR');
+   $dolar = $this->FomartCurrency($array['jor_dolar']);
+   $precoCusto = $this->FomartCurrency($array['jor_precocusto']);
+   $marketing  = $this->FomartCurrency($array['jor_cotamarketing']);
+?>
+   <div class="tundra">
+      <table width="513" border="1" cellpadding="1" class="table" >
+         <tr>
+            <td width="196" height="0"><strong>Data da Publicação:</strong></td>
+            <td width="301" height="0"><div align="center"><?= $data ?></div></td>
+         </tr>
+         <tr>
+            <td height="0"><strong>Dolar:</strong></td>
+            <td height="0"><div align="center"><?= $dolar ?></div></td>
+         </tr>
+         <tr>
+            <td height="0"><strong>Preço de custo:</strong></td>
+            <td height="0"><div align="center"><?= $precoCusto ?></div></td>
+         </tr>
+         <tr>
+            <td height="0"><strong>Número de Funcionário:</strong></td>
+            <td height="0"><div align="center"><?= $array['jor_nrofuncionario'] ?></div></td>
+         </tr>
+         <tr>
+            <td height="0"><strong>Marketing:</strong></td>
+            <td height="0"><div align="center"><?= $marketing ?></div></td>
+         </tr>
+         <tr>
+            <td height="0">
+               <div align="center">
+                  <input type="button" name="Button" value="Voltar" onclick="history.go(-1);"/>
+               </div>
+            </td>
+            <td height="0">
+               <div align="center">
+                  <input type="button" name="Submit2" value="Imprimir" onclick="printpage()" src="_blank"/>
+               </div>
+            </td>
+         </tr>
+      </table>
+   </div>
+<?php } ?>
+<script type="text/javascript">
+function printpage()
+{
+window.print();
+}
+</script>

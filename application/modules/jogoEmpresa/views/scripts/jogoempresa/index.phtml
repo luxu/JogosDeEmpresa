@@ -1,0 +1,46 @@
+<?php
+$this->headLink ()->appendStylesheet ( '/css/ui.jqgrid.css' );
+$this->headLink ()->appendStylesheet ( 'http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css' );
+$this->headLink ()->appendStylesheet ( 'http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css' );
+?>
+<head>
+<script type="text/javascript">
+    $("#tbl-jogoEmpresa").jqGrid({
+                url:'<?php echo $this->url(Array("action" => "dados")); ?>',
+                editurl:'<?php echo $this->url(Array("action" => "save")); ?>',
+        //url:'/jogoEmpresa/Jogoempresa/dados',
+        ///editurl:'/jogoEmpresa/Jogoempresa/save',
+        datatype: "json",
+        mtype: 'GET',
+        colNames:['Empresa', 'Jogo', 'Nota Final', 'Classificação', 'Estado'],
+        colModel:[
+            {name:'emp_codigo',index:'emp_codigo', width: 80, sorttype:"int", align:"center"},
+            {name:'jog_codigo',index:'jog_codigo', width: 250, editable: true},
+            {name:'empjog_notafinal',index:'empjog_notafinal', width: 300, align:"center", editable: true},
+            {name:'empjog_classificacao',index:'empjog_classificacao', width: 140, editable: true},
+            {name:'empjog_estado', hidden: true, index:'empjog_estado', width: 140, editable: true}
+        ],
+        rowNum:10,
+        rowList:[10,20,30],
+        pager: '#pg-jogoEmpresa',
+        sortname: 'emp_codigo',
+        viewrecords: true,
+        sortorder: "ASC",
+        caption:"Jogos de Empresa"
+    });
+    $("#tbl-jogoEmpresa").jqGrid('navGrid','#pg-jogoEmpresa',{edit:true,add:true,del:true,search:true});
+
+    /* Add this line to include a separator between buttons */
+    $('#tbl-jogoEmpresa').navSeparatorAdd("#pg-jogoEmpresa", { sepclass: 'ui-separator', sepcontent: '' });
+
+    /* Add this line to include custom buttons on the toolbar */
+    $('#tbl-jogoEmpresa').jqGrid('navButtonAdd', "#pg-jogoEmpresa", { caption: "", buttonicon: "ui-icon-plusthick", onClickButton: function () { alert('Exporting!!!!!'); }, position: "last", title: "Exportar para o Excel", cursor: "pointer" })
+</script>
+</head>
+
+<h1>INDEX do MÓDULO JOGOEMPRESA</h1>
+<table id="tbl-jogoEmpresa"></table>
+<div id="pg-jogoEmpresa"></div>
+<br />
+<br />
+<br />

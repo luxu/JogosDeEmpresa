@@ -1,0 +1,43 @@
+<span class="label">Jogo</span>
+<hr/>
+<?= $this->form; ?>
+<script type="text/javascript">
+    $('#jog_inicio').datepicker(
+        {
+             dateFormat: 'dd/mm/yy',
+             dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+             dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+             dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+             monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+             monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+             nextText: 'Próximo',
+             prevText: 'Anterior',
+            // maxDate define qual a maior data que
+            // ele pode selecionar
+            // Aqui definida como hoje mais 1 mês.
+            maxDate: "+1m ",
+            // minDate define qual a menor data.
+            // Aqui definida como a data atual.
+            minDate: new Date()
+        }
+    );
+    $('#jog_termino').datepicker(
+        {
+             dateFormat: 'dd/mm/yy',
+             dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+             dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+             dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+             monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+             monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+             nextText: 'Próximo',
+             prevText: 'Anterior',
+            // maxDate define qual a maior data que
+            // ele pode selecionar
+            // Aqui definida como hoje mais 1 mês.
+            maxDate: "+6m ",
+            // minDate define qual a menor data.
+            // Aqui definida como a data atual.
+            minDate: new Date()
+        }
+    );
+</script>

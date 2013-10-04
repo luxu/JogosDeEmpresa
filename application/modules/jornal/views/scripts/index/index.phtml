@@ -1,0 +1,33 @@
+<span class="label">Jornal</span>
+<hr/>
+<a href="/jornal/index/add/">Criar novo Jornal</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Codigo</b></td>
+<!--    <td width="50" align="center" style="padding:5px;"><b>Usuário</b></td>-->
+    <td width="270" align="center" style="padding:5px;"><b>Dolar</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Preço Custo</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Nro Func.</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Cota Marketing</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jor_codigo']; ?></td>
+<!--    <td width="50" align="center" style="padding:5px;"><?php echo $d['usu_codigo']; ?></td>-->
+    <td width="270" style="padding:5px;"><?php echo $d['jor_dolar']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['jor_precocusto']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['jor_nrofuncionario']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['jor_cotamarketing']; ?></td>
+    <td width="90" align="center"><a href="/jornal/index/add/id/<?php echo $d['jor_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/jornal/index/delete/id/<?php echo $d['jor_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>
+

@@ -1,0 +1,25 @@
+<span class="label">Termo</span>
+<hr/>
+<a href="/termo/index/add">Criar novo Termo</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Codigo</b></td>
+    <td width="270" align="center" style="padding:5px;"><b>Descrição</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['ter_codigo']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['ter_descricao']; ?></td>
+    <td width="90" align="center"><a href="/termo/index/add/id/<?php echo $d['ter_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/termo/index/delete/id/<?php echo $d['ter_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>
+

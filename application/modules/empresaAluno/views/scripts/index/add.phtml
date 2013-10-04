@@ -1,0 +1,31 @@
+<span class="label">Empresa-Aluno</span>
+<hr />
+   <?= $this->form; ?>
+<!--   <div id="bar">
+      <table width="100%" border="1">
+         <tr>
+            <td width="10" bgcolor="#CCCCCC">Empresa</td>
+            <td width="10" bgcolor="#CCCCCC">Aluno</td>
+            <td width="5" bgcolor="#CCCCCC">Opções</td>
+         </tr>
+         <?php
+         $id = Zend_Controller_Front::getInstance()->getRequest()->getParam('id');
+         if ($id) {
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $empresa_tem_alunos = $db->fetchAll('SELECT ae.alu_codigo, a.alu_nome, ae.emp_codigo, e.emp_descricao
+            FROM aluno_empresa ae, aluno a, empresa e
+            where ae.emp_codigo = e.emp_codigo
+			AND ae.alu_codigo = a.alu_codigo
+            AND ae.emp_codigo = ' . $id);
+            foreach ($empresa_tem_alunos as $row):
+         ?>
+               <tr>
+                  <td width="10" ><?php echo $row['emp_codigo'] . " - " . $row['emp_descricao']; ?></td>
+                  <td width="10" ><?php echo $row['alu_codigo'] . " - " . $row['alu_nome']; ?></td>
+                  <td width="5"  >
+                     <a href="/empresaAluno/index/delete/id/<?php echo $row['emp_codigo']; ?>">Excluir</a>
+                  </td>
+               </tr>
+         <?php endforeach;
+            } ?>
+-->

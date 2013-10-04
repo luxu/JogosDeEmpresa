@@ -1,0 +1,44 @@
+<span class="label">Jogo</span>
+<hr/>
+<a href="/jogo/index/add/">Criar novo Jogo</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="840" border="1" style="font: 5px" >
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Ano</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Capital</b></td>
+    <td width="76" align="center" style="padding:5px;"><b>Inicio</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Término</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Tema</b></td>
+<!--    <td width="50" align="center" style="padding:5px;"><b>ProdA</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>ProdB</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>ProdC</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>ProdD</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>ProdE</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Func</b></td>-->
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_ano']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_capitalinicial']; ?></td>
+    <td width="76" align="center" style="padding:5px;"><?php echo $d['jog_inicio']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_termino']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_tema']; ?></td>
+<!--    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_precoprod_a']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_precoprod_b']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_precoprod_c']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_precoprod_d']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_precoprod_e']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_qtdefuncionarios']; ?></td>-->
+    <td width="90" align="center"><a href="/jogo/index/add/id/<?php echo $d['jog_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/jogo/index/delete/id/<?php echo $d['jog_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>
+<br />
+<br />

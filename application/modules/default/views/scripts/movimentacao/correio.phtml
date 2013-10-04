@@ -1,0 +1,27 @@
+<h1>CORREIO INDEX</h1>
+<?=$this->form;?>
+<!--Pavilhão - Obter Endereço-->
+<script>
+$(function(){
+    $('#ok').click('blur', function(){
+        $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$(this).val(),
+        function(){
+            $.ajax({
+                url: 'http://solicite.zf.net.br/admin/pavilhao/getAddress',
+                type: 'get',
+                dataType: 'json',
+                success: function(retorno) {
+                    $("#address").val(retorno.address);
+                    $("#number").val(retorno.number);
+                    $('#region').val(retorno.region);
+                    $('#complement').val(retorno.complement);
+                    $('#country_id').val(retorno.country);
+                    $('#state_id').val(retorno.state);
+                    $('#city').val(retorno.city);
+                }
+            });
+
+        });
+    });
+});
+</script>

@@ -1,0 +1,38 @@
+<span class="label">Jogo_Empresa</span>
+<hr/>
+<a href="/jogoEmpresa/index/add/">Criar novo...</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center"  style="padding:5px;"><b>Jogo</b></td>
+    <td width="50" align="center"  style="padding:5px;"><b>Empresa</b></td>
+    <td width="150" align="center" style="padding:5px;"><b>Nota Final</b></td>
+    <td width="50" align="center"  style="padding:5px;"><b>Classificação</b></td>
+    <td width="50" align="center"  style="padding:5px;"><b>Estado</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['jog_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['emp_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['empjog_notafinal']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['empjog_classificacao']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['empjog_estado']; ?></td>
+    <td width="90" align="center">
+       <a href="/jogoEmpresa/index/add/idJogo/<?php echo $d['jog_codigo']; ?>/idEmpresa/<?php echo $d['emp_codigo']; ?>">
+          Atualizar
+       </a>
+    </td>
+    <td width="90" align="center">
+       <a href="/jogoEmpresa/index/delete/idJogo/<?php echo $d['jog_codigo']; ?>/idEmpresa/<?php echo $d['emp_codigo']; ?>">
+          Excluir
+       </a>
+    </td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>

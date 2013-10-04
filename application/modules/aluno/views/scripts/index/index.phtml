@@ -1,0 +1,32 @@
+<span class="label">Aluno</span>
+<hr/>
+<a href="/aluno/index/add/">Criar novo Aluno</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Codigo</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Termo</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Curso</b></td>
+    <td width="270" align="center" style="padding:5px;"><b>Nome</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>RA</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Tipo</b></td>
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['alu_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['ter_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['cur_codigo']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['alu_nome']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['alu_ra']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['alu_tipo']; ?></td>
+    <td width="90" align="center"><a href="/aluno/index/add/id/<?php echo $d['alu_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/aluno/index/delete/id/<?php echo $d['alu_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>

@@ -1,0 +1,173 @@
+<style type="text/css" >
+   #abas{ margin:0; padding: 0; width: 500px; background:#000; }
+   #abas li{ display: inline; }
+   #abas li a{ display: block; width: auto; padding: 3px 8px; margin: 0 1px 0 0;
+               width: 150px; float: left; background:#D1D1D1; color: #797979;
+               text-decoration: none; text-indent: 5px; }
+   #abas li a.selected{ background: #888; color:#F2FC08; cursor: default; text-decoration: underline;
+   }
+   .contaba{  clear: both; }
+   .contaba p { color: yellow}
+   #tab1, #tab2, #tab3, #tab4, #tab5 {margin:0 1px 0 0; padding:0; width: 317px; padding: 3px 8px; background:#888; }
+   label {display:block;}
+   input[type=text] {width:53px;}
+</style>
+<span class="label">Periodo</span>
+<hr/>
+<?= $this->form; ?>
+<hr/>
+<ul id="abas">
+   <li><a href="#tab1">Produto A</a></li>
+   <li><a href="#tab2">Produto B</a></li>
+   <li><a href="#tab3">Produto C</a></li>
+   <li><a href="#tab4">Produto D</a></li>
+   <li><a href="#tab5">Produto E</a></li>
+</ul>
+<div id="tab1" class="contaba">
+   <a name="tab1" />
+   <p>Preço Compra:<input type="text" id="precocompra" >
+      Preço Venda: <input type="text" id="precovenda">
+   </p>
+   <p>Propaganda: <input type="text" id="propaganda">
+      Qtd Comprada: <input type="text" id="qtdcomprada">
+   </p>
+   <p>Qtd Vendida: <input type="text" id="qtdvendida">
+      Total: <input type="text" id="total">
+   </p>
+   <button id="btProdA">Enviar</button>
+</div>
+<div id="tab2" class="contaba">
+   <a name="tab2" />
+   <p>Preço Compra:<input type="text" id="precocompraB">
+      Preço Venda: <input type="text">
+   </p>
+   <p>Propaganda: <input type="text">
+      Qtd Comprada: <input type="text">
+   </p>
+   <p>Qtd Vendida: <input type="text">
+      Total: <input type="text">
+   </p>
+   <button id="btProdB">Enviar</button>
+</div>
+<div id="tab3" class="contaba">
+   <a name="tab3" />
+   <p>Preço Compra:<input type="text">
+      Preço Venda: <input type="text">
+   </p>
+   <p>Propaganda: <input type="text">
+      Qtd Comprada: <input type="text">
+   </p>
+   <p>Qtd Vendida: <input type="text">
+      Total: <input type="text">
+   </p>
+   <button>Enviar</button>
+</div>
+<div id="tab4" class="contaba">
+   <a name="tab3" />
+   <p>Preço Compra:<input type="text">
+      Preço Venda: <input type="text">
+   </p>
+   <p>Propaganda: <input type="text">
+      Qtd Comprada: <input type="text">
+   </p>
+   <p>Qtd Vendida: <input type="text">
+      Total: <input type="text">
+   </p>
+   <button>Enviar</button>
+</div>
+<div id="tab5" class="contaba">
+   <a name="tab3" />
+   <p>Preço Compra:<input type="text">
+      Preço Venda: <input type="text">
+   </p>
+   <p>Propaganda: <input type="text">
+      Qtd Comprada: <input type="text">
+   </p>
+   <p>Qtd Vendida: <input type="text">
+      Total: <input type="text">
+   </p>
+   <button>Enviar</button>
+</div>
+
+
+<script type="text/javascript">
+   $(function(){
+      // abas
+      // oculta todas as abas
+      $("div.contaba").hide();
+      // mostra somente  a primeira aba
+      $("div.contaba:first").show();
+      // seta a primeira aba como selecionada (na lista de abas)
+      $("#abas a:first").addClass("selected");
+      // quando clicar no link de uma aba
+      $("#abas a").click(function(){
+         // oculta todas as abas
+         $("div.contaba").hide();
+         // tira a seleção da aba atual
+         $("#abas a").removeClass("selected");
+
+         // adiciona a classe selected na selecionada atualmente
+         $(this).addClass("selected");
+         // mostra a aba clicada
+         $($(this).attr("href")).show();
+         // pra nao ir para o link
+         return false;
+      });
+   });
+   $(document).ready(function(){
+      $("#btProdA").click(function(){
+         var r=confirm("Confirmar Gravação?");
+         if (r==true)
+         {
+            $.ajax({
+               url: '/periodo/index/control/',
+               //               async: false,
+               type: 'post',
+               data: 'precocompra='+ $("#precocompra").val(),
+               dataType: 'html',
+               success: function(){
+                  //Colocar a resposta do aqruivo na div de intens do carrinho
+                  alert('Item Adicionado');
+               }
+            });
+            alert("Preço da compra: " + $("#precocompra").val()
+               + "\nPreço da Venda: " + $("#precovenda").val()
+               + "\nPropaganda: " + $("#propaganda").val()
+               + "\nQtd Comprada: " + $("#qtdcomprada").val()
+               + "\nQtd Vendida: " + $("#qtdvendida").val()
+               + "\nTotal: " + $("#total").val());
+         }
+         else {
+            alert("Cancelado pelo usuário!");
+         }
+      });
+      $("#btn2").click(function(){
+         alert("HTML: " + $("#test").html());
+      });
+   });
+
+   $(document).ready(function(){
+      $("#btProdB").click(function(){
+         var r=confirm("Confirmar Gravação?");
+         if (r==true)
+         {
+            //Função que ao clicar no botão, irá fazer.
+            $("#cadastrarEmail").click(function(){
+               //Irá esconder a div do formulario que é o formularioEmail, com efeito em slow.
+               $("#formularioEmail").hide("slow");
+               //Aqui diz que antes de enviar, irá aparecer a div carregando_form, com efeito slow.
+               beforeSend:$("#carregando_form").show("slow");
+               //Pegando os valores que foram digitados no formulário e colocando nas variáveis nome e email.
+               var nome = $("#precocompraB").val();
+               var email = $("#precocompraB").val();
+               //Enviando as variáveis com os valores para a página envia_formulario.php e criando uma nova função para pegar o retorno da página envia_formulario.php
+               $.post("/periodo/index/control/", { nome:nome, email:email }, function(get_retorno) {
+                  //Depois que foi completado o cadastro e tem a mensagem de retorno, esconde a div carregando_form que tem a barra de carregamento.
+                  complete:$("#carregando_form").hide("slow");
+                  //Aqui coloca o valor que retono na função get_retorno dentro da div retorno, e mostra a div com efeito em slow.
+                  $("#retorno").show("slow").text(get_retorno);
+               });
+            });
+         }});
+      });
+</script>

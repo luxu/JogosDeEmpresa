@@ -1,0 +1,30 @@
+<h1>USUÁRIO Index Action</h1>
+<br />
+<a href="/usuario/index/add/">Criar novo Usuário</a>
+<br />
+<br />
+<?php if (count($this->data) > 0): ?>
+<table width="500" border="1">
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><b>Codigo</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Cargo</b></td>
+<!--    <td width="270" align="center" style="padding:5px;"><b>Nome</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>RA</b></td>
+    <td width="50" align="center" style="padding:5px;"><b>Tipo</b></td>-->
+    <td width="180" align="center" colspan="2"><b>OPÇÕES</b></td>
+  </tr>
+<?php foreach ($this->data as $d): ?>
+  <tr>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['alu_codigo']; ?></td>
+    <td width="50" align="center" style="padding:5px;"><?php echo $d['coo_codigo']; ?></td>
+<!--    <td width="270" style="padding:5px;"><?php echo $d['usu_nome']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['usu_ra']; ?></td>
+    <td width="270" style="padding:5px;"><?php echo $d['usu_tipo']; ?></td>-->
+    <td width="90" align="center"><a href="/usuario/index/add/id/<?php echo $d['coo_codigo']; ?>">Atualizar</a></td>
+    <td width="90" align="center"><a href="/usuario/index/delete/id/<?php echo $d['coo_codigo']; ?>">Excluir</a></td>
+  </tr>
+<?php endforeach; ?>
+</table>
+<br />
+<?php echo $this->data; ?>
+<?php endif; ?>

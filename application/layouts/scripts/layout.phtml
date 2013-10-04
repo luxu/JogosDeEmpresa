@@ -1,0 +1,82 @@
+<?php echo $this->Doctype() ?>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+      <?php
+      echo $this->headTitle();
+      echo $this->headlink();
+      echo $this->headScript();
+      $this->headTitle()->append('Jogos de Empresa');
+      $this->headTitle()->setSeparator(' - ');
+//      echo $this->jQuery()->Enable();
+      //$usuario = Zend_Auth::getInstance()->getStorage()->read();
+      ?>
+   </head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+      <div class="container">
+         <div id="logo">
+            <a href="/" class="thumbnail inner-border">
+               <img src="/JogosEmpresa/public/img/LogoJogo.jpg" alt="">
+            </a>
+         </div>
+         <div class="dropdown">
+            <input type="hidden" value="4/23/99" id="rangeA" />
+            <input type="hidden" value="4/23/99" id="rangeBb" />
+            <hr />
+            <div class="wijmo-container">
+               <ul id="menu1">
+                  <li><a href="/index/home">
+                        <img src="/JogosEmpresa/public/img/home.png" alt="Inicio" title="Inicio">
+                     </a></li>
+                  <li><a href="#">Cadastro</a>
+                     <ul>
+                        <li><a href="/aluno">Aluno</a> </li>
+                        <li><a href="/empresa">Empresa</a> </li>
+                        <li><a href="/jogo">Jogo</a></li>
+                        <li><a href="/termo">Termo</a></li>
+                        <li><a href="/curso">Curso</a></li>
+                        <li><a href="/periodo">Período</a></li>
+                        <li><a href="/jornal">Jornal</a> </li>
+                     </ul>
+                  </li>
+                  <li><a href="#">Movimentação</a>
+                     <ul>
+                        <li><a href="/jogoEmpresa">Jogo-Empresa</a> </li>
+                        <li><a href="/empresaAluno">Empresa-Aluno</a> </li>
+                        <li><a href="/movimentacao/lerjornal">Acessar o Jornal</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">Relatório</a>
+                     <ul>
+                        <li><a href="/jornal/index/relatorio" target="_blank" >Jornal</a> </li>
+                        <li><a href="/periodo/index/relatorio" target="_blank">Período</a> </li>
+                        <li><a href="/movimentacao/lerjornal">Acessar o Jornal</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="/index/sair">
+                        <img src="/JogosEmpresa/public/img/sair.png" alt="Sair" title="Sair">
+                     </a></li>
+                  <li>
+                     <p>
+                        <?php
+                        if (isset($usuario->alu_codigo)) {
+                           $aluno_empresa = new EmpresaAluno_Model_EmpresaAluno();
+                           $codigoAlunoEmpresa = $aluno_empresa->fetchRow("alu_codigo = " . $usuario->alu_codigo);
+                           echo '<strong><em> Operador: </em> </strong>' . $usuario->alu_nome;
+                        } ?>
+                  </p>
+                  </li>
+               </ul>
+            </div>
+            <p>&nbsp;</p>
+            </li>
+         </div>
+         <?php echo $this->layout()->content; ?>
+                        <div class="alert alert-block">
+            <?= $this->flashMessenger(); ?>
+                     </div>
+                     <footer>
+                        Todos os direitos reservados. © <?php echo date('Y') ?> • <a href="http://www.luxu.com.br" target="_blank" >www.luxu.com.br</a>
+         </footer><!-- /footer -->
+      </body>
+</html>
