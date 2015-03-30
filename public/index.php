@@ -3,8 +3,9 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors','on');
 
 // Define path to application directory 
-defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '../application'));
-//var_dump('APPLICATION_PATH', realpath(dirname(__FILE__))); "/home/luxucom/public_html/JogosEmpresa/public" 
+//defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '../application'));
+var_dump('APPLICATION_PATH', realpath(dirname(__FILE__))); "/var/www/webroot/ROOT/public" 
+die;
 
 // Define application environment
 defined('APPLICATION_ENV')  || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
@@ -20,6 +21,7 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     '/home/luxucom/public_html/JogosEmpresa/application/configs/application.ini'
 );
+
 
 $application->bootstrap()
             ->run();
